@@ -1,31 +1,17 @@
 use std::error::Error;
 use std::process;
 
-use modin_rs::text_input;
-
-/*
-    let stdout = Term::buffered_stdout();
-    let mut s = 1;
-
-    'game_loop: loop {
-        if let Ok(character) = stdout.read_char() {
-            match character {
-                'f' => {
-                    s += 1;
-                    clear_n_lines(1, s.to_string())
-                }
-                _ => break 'game_loop,
-            }
-        }
-    }
-
-    Ok(())
-* */
+use modin_rs::Modin;
 
 fn run() -> Result<(), Box<dyn Error>> {
-    let email = text_input("Enter your email")?;
+    let modin = Modin::new();
+
+    let email = modin.text_input("Enter your email")?;
+    let username = modin.text_input("What is your name?")?;
 
     println!("User email is {email}");
+    println!("Your name is {username}");
+
     Ok(())
 }
 
